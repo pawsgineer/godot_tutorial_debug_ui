@@ -1,0 +1,111 @@
+[gd_scene load_steps=9 format=3 uid="uid://dffhij42ug2rh"]
+
+[ext_resource type="Script" path="res://addons/debug_ui/debug_ui.gd" id="1_k1fbi"]
+[ext_resource type="Script" path="res://addons/debug_ui/log.gd" id="2_nibbf"]
+[ext_resource type="Script" path="res://addons/debug_ui/notify.gd" id="3_mlmea"]
+[ext_resource type="Script" path="res://addons/debug_ui/data_tabs.gd" id="5_r87jt"]
+[ext_resource type="Script" path="res://addons/debug_ui/buttons.gd" id="6_qob3u"]
+
+[sub_resource type="Theme" id="Theme_4twho"]
+default_font_size = 11
+
+[sub_resource type="LabelSettings" id="LabelSettings_huom8"]
+line_spacing = 0.0
+font_size = 12
+font_color = Color(1, 1, 1, 0.607843)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_edgix"]
+bg_color = Color(0, 0, 0, 0.196078)
+
+[node name="DebugUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k1fbi")
+
+[node name="Log" type="RichTextLabel" parent="."]
+modulate = Color(1, 1, 1, 0.607843)
+layout_mode = 1
+anchors_preset = -1
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 512.0
+offset_bottom = 160.0
+theme = SubResource("Theme_4twho")
+text = "Test Log
+	Test Log 2"
+tab_size = 2
+shortcut_keys_enabled = false
+script = ExtResource("2_nibbf")
+
+[node name="Notify" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -100.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 59.0
+grow_horizontal = 0
+text = "Notify 1
+Notify 2
+Notify 3Notify 3"
+label_settings = SubResource("LabelSettings_huom8")
+horizontal_alignment = 2
+script = ExtResource("3_mlmea")
+
+[node name="DataTabs" type="TabContainer" parent="."]
+modulate = Color(1, 1, 1, 0.607843)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -286.0
+offset_right = 370.0
+offset_bottom = -8.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 12
+theme_override_styles/panel = SubResource("StyleBoxFlat_edgix")
+current_tab = 0
+tabs_position = 1
+script = ExtResource("5_r87jt")
+
+[node name="DataLabelSample1" parent="DataTabs" instance_placeholder="res://addons/debug_ui/data_tab.tscn"]
+layout_mode = 2
+
+[node name="DataLabelSample2" parent="DataTabs" instance_placeholder="res://addons/debug_ui/data_tab.tscn"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="DataLabelSample3" parent="DataTabs" instance_placeholder="res://addons/debug_ui/data_tab.tscn"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="Buttons" type="HFlowContainer" parent="."]
+modulate = Color(1, 1, 1, 0.607843)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -52.0
+offset_top = 8.0
+offset_right = 241.0
+offset_bottom = 179.0
+grow_horizontal = 2
+script = ExtResource("6_qob3u")
+
+[node name="ButtonExample1" parent="Buttons" instance_placeholder="res://addons/debug_ui/button.tscn"]
+layout_mode = 2
+
+[node name="ButtonExample2" parent="Buttons" instance_placeholder="res://addons/debug_ui/button.tscn"]
+layout_mode = 2
+
+[node name="ButtonExample3" parent="Buttons" instance_placeholder="res://addons/debug_ui/button.tscn"]
+layout_mode = 2

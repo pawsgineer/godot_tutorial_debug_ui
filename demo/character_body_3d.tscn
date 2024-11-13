@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://4efpeoq4rrlg"]
+
+[ext_resource type="Script" path="res://demo/character_body_3d.gd" id="1_bm673"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o5xr6"]
+albedo_color = Color(0.7, 1, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3ccay"]
+material = SubResource("StandardMaterial3D_o5xr6")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0qb8e"]
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+script = ExtResource("1_bm673")
+random_position_range = null
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+gi_mode = 2
+mesh = SubResource("CapsuleMesh_3ccay")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_0qb8e")
+
+[node name="NameLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, 0)
+billboard = 1
+no_depth_test = true
+text = "AAA"
